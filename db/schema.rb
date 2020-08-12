@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_184631) do
+ActiveRecord::Schema.define(version: 2020_08_12_191936) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "quadrant"
     t.string "description"
+    t.integer "game_id"
   end
 
   create_table "games", force: :cascade do |t|
