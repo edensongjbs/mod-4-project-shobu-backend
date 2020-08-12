@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_205918) do
+ActiveRecord::Schema.define(version: 2020_08_12_222445) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "quadrant"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_205918) do
   create_table "squares", force: :cascade do |t|
     t.string "coordinates"
     t.string "board_id"
+    t.boolean "dead_square", default: false
   end
 
 end

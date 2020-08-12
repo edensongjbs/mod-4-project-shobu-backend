@@ -49,6 +49,9 @@ shobu_board = []
     shobu_board << Board.create(game: shobu, quadrant:i, description:"")
 end
 
+dead_board = Board.create(game: shobu, quadrant: 4, description: "where pieces go to die")
+dead_square = Square.create(board: dead_board, coordinates: "00", dead_square: true)
+
 shobu_board.each_with_index do |board, board_index|
     4.times do |i1|
         4.times do |i2|
