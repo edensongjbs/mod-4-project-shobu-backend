@@ -1,6 +1,6 @@
 class Move < ApplicationRecord
-    belongs_to :square, foreign_key: :start_square
-    belongs_to :square, foreign_key: :end_square
+    belongs_to :start_square, class_name: 'Square'
+    belongs_to :end_square, class_name: 'Square'
     belongs_to :piece
 end
   

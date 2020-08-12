@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_191936) do
+ActiveRecord::Schema.define(version: 2020_08_12_205918) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "quadrant"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_191936) do
 
   create_table "games", force: :cascade do |t|
     t.string "url"
+    t.string "current_board_json"
   end
 
   create_table "moves", force: :cascade do |t|
