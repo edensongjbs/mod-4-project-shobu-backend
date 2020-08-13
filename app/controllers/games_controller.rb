@@ -11,6 +11,14 @@ class GamesController < ApplicationController
         # sends back the initial board set up
         # and all data for the pieces
         # send url links for both players
+        game = Game.create(url:games_params["url"])
+        game.generate_current_board
+        response = {}
+        response["current_board"] = game.current_board_json
+        response["game"] = game
+        response["pieces"] = game.pieces
+        response["players"] = game.players
+        render json: response
     end
 
     def delete
@@ -20,6 +28,6 @@ class GamesController < ApplicationController
     private
 
     def games_params
-        params.require(:game).permit(:player_url, :id)
+        params.require(:game).permit(:player_url, :id, :url)
     end
 end
