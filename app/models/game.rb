@@ -54,5 +54,11 @@ class Game < ApplicationRecord
     def generate_game
         GameGenerator.generate_game(self)
     end
+
+    def find_square_by_coords(coords)
+        # coordsAr = coords.split('')
+        board = self.boards.find_by(quadrant: coords[0].to_i)
+        return board.squares.find_by(coordinates: coords.slice(1,2) )
+    end
 end
   
