@@ -4,7 +4,7 @@ class Game < ApplicationRecord
     has_many :pieces, through: :players
     has_many :moves, through: :pieces
     has_many :squares, through: :boards
-    after_create :generate_game, :generate_current_board
+    after_create :generate_game
 
     def shobu_matrix
         [

@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
-    def show
+    def index
         # sends back a string "waiting" if its not user's turn yet, else
         # returns the updated game board and anything else necessary
+        game = Game.last
+        render json: game.current_board_json
     end
 
     def create
@@ -9,7 +11,6 @@ class GamesController < ApplicationController
         # sends back the initial board set up
         # and all data for the pieces
         # send url links for both players
-        shobu = Gam
     end
 
     def delete
