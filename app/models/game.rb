@@ -4,6 +4,7 @@ class Game < ApplicationRecord
     has_many :pieces, through: :players
     has_many :moves, through: :pieces
     has_many :squares, through: :boards
+    after_create :generate_game, :generate_current_board
 
     def shobu_matrix
         [
@@ -34,7 +35,7 @@ class Game < ApplicationRecord
         ]
     end
 
-    def generateCurrentBoard
+    def generate_current_board
         current_board = self.shobu_matrix
         self.pieces.each do |piece|
             if !piece.dead?
@@ -48,6 +49,10 @@ class Game < ApplicationRecord
 
     def dead_square
         self.squares.find_by(dead_square:true)
+    end
+
+    def generate_game
+        GameGenerator.generate_game(self)
     end
 end
   
