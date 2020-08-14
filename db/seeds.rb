@@ -13,7 +13,8 @@ Piece.destroy_all
 Player.destroy_all
 Square.destroy_all
 
-Game.create(url:"shobu")
+game = Game.create(url:"shobu")
+game.generate_current_board
 
 
 # shobu_matrix = [
