@@ -7,9 +7,9 @@ class PlayersController < ApplicationController
         player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
         game = Player.find(player_id).game
         response = {}
-        response["game"] = game.current_board_json
+        response["game"] = JSON.parse(game.current_board_json)
         response["pieces"] = ShobuSerializer.pieces_serialize(game.pieces)
-        response["players"] = [ShobuSerializer.player_serialize(game.players[0]), ShobuSerializer.player_serialize(game.players[0])]
+        response["players"] = [ShobuSerializer.player_serialize(game.players[0]), ShobuSerializer.player_serialize(game.players[1])]
         render json: response
     end
 
