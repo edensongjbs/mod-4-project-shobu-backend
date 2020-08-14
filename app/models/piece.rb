@@ -7,7 +7,11 @@ class Piece < ApplicationRecord
     end
 
     def dead?
-        current_square == self.game.dead_square
+        if (self.moves.length > 0)
+            return current_square == self.game.dead_square
+        else
+            return false
+        end
     end
 
     def current_square

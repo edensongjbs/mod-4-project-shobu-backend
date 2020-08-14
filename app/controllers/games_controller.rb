@@ -14,10 +14,9 @@ class GamesController < ApplicationController
         game = Game.create(url:games_params["url"])
         game.generate_current_board
         response = {}
-        response["current_board"] = game.current_board_json
-        response["game"] = game
-        response["pieces"] = game.pieces
-        response["players"] = game.players
+        response["game"] = game.current_board_json
+        response["pieces"] = ShobuSerializer.pieces_serialize(game.pieces)
+        response["players"] = [ShobuSerializer.player_serialize(game.players[0]), ShobuSerializer.player_serialize(game.players[0])]
         render json: response
     end
 
