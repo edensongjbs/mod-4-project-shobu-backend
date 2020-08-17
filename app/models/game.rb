@@ -59,6 +59,10 @@ class Game < ApplicationRecord
         GameGenerator.reset_game(self)
     end
 
+    def remove_game
+        GameGenerator.remove_game(self)
+    end
+
     def find_square_by_coords(coords)
         # coordsAr = coords.split('')
         board = self.boards.find_by(quadrant: coords[0].to_i)

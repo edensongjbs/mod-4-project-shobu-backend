@@ -15,7 +15,6 @@ class GamesController < ApplicationController
     end
 
     def create
-        byebug
         # byebug
         # creates a new game and all associated data.
         # sends back the initial board set up
@@ -50,7 +49,16 @@ class GamesController < ApplicationController
     end
 
     def delete
+        byebug
         # removes the game and everything that belongs to it
+        player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
+        player = Player.find(player_id)
+        game = player.game
+        game.remove_game
+        game.destroy!
+        response = {}
+        byebug
+        render json: {message: "Game Successfully Deleted!"}
     end
 
     private

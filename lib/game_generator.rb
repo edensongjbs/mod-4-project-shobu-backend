@@ -52,6 +52,24 @@ class GameGenerator
         ]
     end
 
+    def self.remove_game(shobu)
+        game.moves.each do |move|
+            move.destroy!
+        end
+        game.pieces.each do |piece|
+            piece.destroy!
+        end
+        game.squares.each do |square|
+            square.destroy!
+        end
+        game.boards.each do |board|
+            board.destroy!
+        end
+        game.players.each do |player|
+            player.destroy!
+        end
+    end
+
     def self.reset_game(shobu)
 
         shobu.moves.each{|move| move.destroy}

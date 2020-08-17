@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post '/moves' => "moves#create"
   get '/players' => "players#index"
   patch '/games' => "games#update"
+  delete '/games' => "games#delete"
 end
