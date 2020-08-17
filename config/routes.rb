@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/games' => "games#create"
   post '/moves' => "moves#create"
   get '/players' => "players#index"
+  patch '/games' => "games#update"
 end

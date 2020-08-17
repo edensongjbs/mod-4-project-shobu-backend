@@ -52,7 +52,34 @@ class GameGenerator
         ]
     end
 
-    def self.generate_game(shobu, player_1_name = "Player 1")
+    def self.reset_game(shobu)
+
+        shobu.moves.each{|move| move.destroy}
+
+        the_pieces = shobu.pieces.to_a.cycle
+        
+        4.times do |board_id|
+            4.times do |row_id|
+                the_piece = the_pieces.next
+                the_square = shobu.find_square_by_coords("#{board_id}#{row_id}0")
+                Move.create!(done: false, read: true, aggressive: false, start_square: the_square, end_square: the_square, piece: the_piece)
+            end
+        end
+        
+        4.times do |board_id|
+            4.times do |row_id|
+                the_piece = the_pieces.next
+                the_square = shobu.find_square_by_coords("#{board_id}#{row_id}3")
+                # the_piece = Piece.create(url:"", player: player2, color: "black")
+                Move.create!(done: false, read: true, aggressive: false, start_square: the_square, end_square: the_square, piece: the_piece)
+            end
+        end
+
+        shobu.generate_current_board
+
+    end
+
+    def self.generate_game(shobu)
         shobu_matrix = self.shobu_matrix
         shobu_board = []
 

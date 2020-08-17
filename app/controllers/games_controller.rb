@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
     def index
         # byebug
+        # byebug
         # sends back a string "waiting" if its not user's turn yet, else
         # returns the updated game board and anything else necessary
         player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
@@ -14,6 +15,7 @@ class GamesController < ApplicationController
     end
 
     def create
+        byebug
         # byebug
         # creates a new game and all associated data.
         # sends back the initial board set up
@@ -33,7 +35,18 @@ class GamesController < ApplicationController
     end
 
     def update
+        # byebug
         # resets game back to beginning without creating a new game
+        player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
+        player = Player.find(player_id)
+        game = player.game
+        game.reset_game
+        game.generate_current_board
+        response = {}
+        response["game"] = JSON.parse(game.current_board_json)
+        response["players"] = {you: ShobuSerializer.player_serialize(player), opponent: ShobuSerializer.player_serialize(player.opponent)}
+        # byebug
+        render json: response
     end
 
     def delete
