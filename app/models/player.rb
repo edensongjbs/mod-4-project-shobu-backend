@@ -8,5 +8,13 @@ class Player < ApplicationRecord
         self.update_attributes(url: JWT.encode(self.id.to_s, "Shobu"))
     end
 
+    def opponent
+        self.game.players.to_a.find{|player| player.id != self.id }
+    end
+
+    def pieces_out
+        self.pieces.to_a.select{|piece| piece.dead?}
+    end
+
 end
   

@@ -52,7 +52,7 @@ class GameGenerator
         ]
     end
 
-    def self.generate_game(shobu)
+    def self.generate_game(shobu, player_1_name = "Player 1")
         shobu_matrix = self.shobu_matrix
         shobu_board = []
 

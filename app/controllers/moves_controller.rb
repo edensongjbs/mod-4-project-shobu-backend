@@ -11,7 +11,10 @@ class MovesController < ApplicationController
         end_square = game.find_square_by_coords(params[:coordinates])
         Move.create(piece: the_piece, start_square: start_square, end_square: end_square)
         game.generate_current_board
-        render json: game.current_board_json
+        game_specs = {}
+        game_specs[:game] = JSON.parse(game.current_board_json)
+        game_specs[:pieces_out] = {you: player.pieces_out, opponent: player.opponent.pieces_out }
+        render json: game_specs
     end
 
     private

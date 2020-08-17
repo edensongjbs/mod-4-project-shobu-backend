@@ -5,11 +5,12 @@ class PlayersController < ApplicationController
         # essentially everything a create game would send back, but not actually creating anything
         # byebug
         player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
-        game = Player.find(player_id).game
+        player = Player.find(player_id)
+        game = player.game
         response = {}
         response["game"] = JSON.parse(game.current_board_json)
         response["pieces"] = ShobuSerializer.pieces_serialize(game.pieces)
-        response["players"] = [ShobuSerializer.player_serialize(game.players[0]), ShobuSerializer.player_serialize(game.players[1])]
+        response["players"] = {you: ShobuSerializer.player_serialize(player), opponent: ShobuSerializer.player_serialize(player.opponent)}
         render json: response
     end
 
