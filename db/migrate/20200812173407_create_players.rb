@@ -6,7 +6,7 @@ class CreatePlayers < ActiveRecord::Migration[6.0]
       t.string :url
       t.integer :points, default: 0
       t.string :password_digest
-      t.string :game_id
+      t.integer :game_id
       t.boolean :primary
     end
   end

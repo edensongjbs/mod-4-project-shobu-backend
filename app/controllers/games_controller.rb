@@ -49,15 +49,13 @@ class GamesController < ApplicationController
     end
 
     def delete
-        byebug
         # removes the game and everything that belongs to it
         player_id = JWT.decode(params[:jwt], "Shobu")[0].to_i
         player = Player.find(player_id)
         game = player.game
-        game.remove_game
+        GameGenerator.remove_game(game)
         game.destroy!
-        response = {}
-        byebug
+        # byebug
         render json: {message: "Game Successfully Deleted!"}
     end
 

@@ -37,7 +37,7 @@ class Game < ApplicationRecord
 
     def generate_current_board
         current_board = self.shobu_matrix
-        self.pieces.each do |piece|
+        self.pieces.to_a.each do |piece|
             if !piece.dead?
                 coords = piece.current_square.coordinates.split('')
                 current_board[piece.current_square.board.quadrant][coords[0].to_i][coords[1].to_i]=piece.id

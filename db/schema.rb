@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_08_12_222445) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boards", force: :cascade do |t|
     t.integer "quadrant"
     t.string "description"
@@ -27,15 +30,15 @@ ActiveRecord::Schema.define(version: 2020_08_12_222445) do
     t.boolean "done"
     t.boolean "read"
     t.boolean "aggressive"
-    t.string "start_square_id"
-    t.string "end_square_id"
-    t.string "piece_id"
+    t.integer "start_square_id"
+    t.integer "end_square_id"
+    t.integer "piece_id"
   end
 
   create_table "pieces", force: :cascade do |t|
     t.string "url"
     t.string "rotation", default: "0deg"
-    t.string "player_id"
+    t.integer "player_id"
     t.string "color"
   end
 
@@ -45,13 +48,13 @@ ActiveRecord::Schema.define(version: 2020_08_12_222445) do
     t.string "url"
     t.integer "points", default: 0
     t.string "password_digest"
-    t.string "game_id"
+    t.integer "game_id"
     t.boolean "primary"
   end
 
   create_table "squares", force: :cascade do |t|
     t.string "coordinates"
-    t.string "board_id"
+    t.integer "board_id"
     t.boolean "dead_square", default: false
   end
 
