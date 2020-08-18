@@ -11,6 +11,7 @@ class PlayersController < ApplicationController
         response["game"] = JSON.parse(game.current_board_json)
         response["pieces"] = ShobuSerializer.pieces_serialize(game.pieces)
         response["players"] = {you: ShobuSerializer.player_serialize(player), opponent: ShobuSerializer.player_serialize(player.opponent)}
+        response[:pieces_out] = {you: player.pieces_out, opponent: player.opponent.pieces_out }
         render json: response
     end
 
