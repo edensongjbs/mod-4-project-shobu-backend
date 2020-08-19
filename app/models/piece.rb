@@ -15,7 +15,7 @@ class Piece < ApplicationRecord
     end
 
     def current_square
-        self.moves.last.end_square
+        self.moves.to_a.max_by{|move| move.id}.end_square
     end
 end
   
