@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/players' => "players#index"
   patch '/games' => "games#update"
   delete '/games' => "games#delete"
+  mount ActionCable.server => '/cable'
 end

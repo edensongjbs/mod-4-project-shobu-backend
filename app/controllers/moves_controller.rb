@@ -18,6 +18,7 @@ class MovesController < ApplicationController
         game_specs = {}
         game_specs[:game] = JSON.parse(game.current_board_json)
         game_specs[:pieces_out] = {you: player.pieces_out, opponent: player.opponent.pieces_out }
+        GamesChannel.broadcast_to(game, game_specs)
         render json: game_specs
     end
 
