@@ -9,7 +9,7 @@
 
 ## About
 
-**Shobu** is an opportunity to connect with a friend to play an online board game when we can't meet face to face.  The look and feel is modeled off of the original strategy game.  This simple browser game is designed to be easy to use and have a low barrier to entry.  No username or personal information is required.  Just enter a name and an opponents name two unique game links will be generated for you.  You can take a break and pick up where you left off later (on the same device/browser or a completely new one).
+**Shobu** is an opportunity to connect with a friend to play an online board game at a time when we can't meet face to face.  The look and feel is modeled off of the original strategy game.  This simple browser game is designed to be easy to use and have a low barrier to entry.  No username or personal information is required.  Just enter a name and an opponents name two unique game links will be generated for you.  You can take a break and pick up where you left off later (on the same device/browser or a completely new one).
 
 ## Tech Stack
 
